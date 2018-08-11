@@ -16,7 +16,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const p = __importStar(require("child_process"));
-const gg = require("simple-git")();
 const repo = "https://github.com/fskorzec/shadow-flux";
 var log = (...params) => void 0;
 // log(JSON.stringify(p.execSync(`git clone https://github.com/fskorzec/shadow-flux ./repo/4aacaf9af7b939cd3b54b76f1d7b964dfa9fa3ac`).toString()));

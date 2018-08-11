@@ -20,12 +20,12 @@ const GithubApp_1 = require("./GithubApp");
 const Checkout_1 = require("./Checkout");
 const server = new Hapi.Server({
     host: 'localhost',
-    port: 8080
+    port: 80
 });
 // Add the route
 server.route({
     method: 'POST',
-    path: '/hello',
+    path: '/github',
     handler: function (request, h) {
         const data = request.payload;
         const action = data.action;

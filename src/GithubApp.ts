@@ -4,10 +4,7 @@ import jwt from "jsonwebtoken";
 import * as fs from "fs";
 import Http from "node-fetch";
 
-const clientId = "Iv1.b57f1d5428db439c";
-const clientSecret = "bc45eea2aa777740d3b7f6327474388c7067c9a2";
-
-const certPath = "C:\\Users\\franc\\.ssh\\shadow-ci.2018-08-10.private-key.pem";
+const certPath = "perm.txt";
 const appId = "15950";
 
 const perm = fs.readFileSync(certPath, "utf8");
