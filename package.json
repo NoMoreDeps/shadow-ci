@@ -1,0 +1,26 @@
+{
+  "name": "shadow-ci",
+  "version": "1.0.0",
+  "description": "CI tools",
+  "main": "index.js",
+  "repository": "https://github.com/fskorzec/shadow-ci.git",
+  "author": "fskorzec <fskorzec@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^15.9.5",
+    "@types/jsonwebtoken": "^7.2.8",
+    "@types/nodegit": "^0.22.3",
+    "github": "^14.0.0",
+    "hapi": "^17.5.3",
+    "jsonwebtoken": "^8.3.0",
+    "node-fetch": "^2.2.0",
+    "nodegit": "^0.22.2",
+    "octokit": "^1.0.0-hello-world",
+    "openssl": "^1.1.0",
+    "simple-git": "^1.96.0"
+  },
+  "devDependencies": {
+    "@types/hapi": "^17.0.17",
+    "@types/node-fetch": "^2.1.2"
+  }
+}
