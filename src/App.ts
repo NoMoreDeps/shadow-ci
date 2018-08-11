@@ -4,13 +4,13 @@ import { doTest } from "./Checkout";
 
 const server = new Hapi.Server({
   host: 'localhost',
-  port: 8080
+  port: 80
 });
 
 // Add the route
 server.route({
   method: 'POST',
-  path: '/hello',
+  path: '/github',
   handler: function (request, h) {
     const data: any = request.payload;
 
