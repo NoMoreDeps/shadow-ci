@@ -12,7 +12,7 @@
     "hapi": "^17.5.3",
     "jsonwebtoken": "^8.3.0",
     "node-fetch": "^2.2.0",
-    "octokit": "^1.0.0-hello-world",
+    "octokit": "^1.0.0-hello-world"
   },
   "devDependencies": {
     "@types/hapi": "^17.0.17",
