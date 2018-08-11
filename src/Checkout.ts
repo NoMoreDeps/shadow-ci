@@ -1,4 +1,3 @@
-import Git from "nodegit";
 import * as p from "child_process";
 
 const repo = "https://github.com/fskorzec/shadow-flux";
