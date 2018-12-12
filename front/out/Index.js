@@ -45,8 +45,9 @@ var docker = new Docker({
       WorkingDir:"/cc/flux"
   }, function (err, data, container) {
     console.log(err, data);
-    docker.pruneVolumes();
-    docker.pruneContainers();
+    docker.pruneContainers().then( _ => {
+      docker.pruneVolumes();
+    })
       })
     });
   });
