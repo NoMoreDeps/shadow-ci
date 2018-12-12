@@ -8,25 +8,71 @@ var docker = new Docker({
     key: fs.readFileSync('key.pem'),*/
     version: 'v1.25' // required when Docker >= v1.13, https://docs.docker.com/engine/api/version-history/
   });
+
+  docker.createVolume({"Name": "cc"}).then( _ => {
+  docker.run('git:2.17', ["git","clone", "--recursive", "https://github.com/fskorzec/shadow-flux.git", "/cc/flux"], process.stdout,{
+    HostConfig: {
+      Mounts: [{
+          Source:"cc",
+          Target:"/cc",
+          Type:"volume",
+          ReadOnly:false
+      }]
+  }
+  }, function (err, data, container) {
+    console.log(err, data);
+    docker.run('nodejs:10.x', ["npm","i"], process.stdout, {
+      HostConfig: {
+        Mounts: [{
+            Source:"cc",
+            Target:"/cc",
+            Type:"volume",
+            ReadOnly:false
+        }]
+    },
+      WorkingDir:"/cc/flux"
+    },function (err, data, container) {
+      console.log(err, data);
+      docker.run('nodejs:10.x', ["npm","run", "test"], process.stdout, {
+    HostConfig: {
+      Mounts: [{
+          Source:"cc",
+          Target:"/cc",
+          Type:"volume",
+          ReadOnly:false
+      }]
+  },
+      WorkingDir:"/cc/flux"
+  }, function (err, data, container) {
+    console.log(err, data);
+    docker.pruneVolumes();
+    docker.pruneContainers();
+      })
+    });
+  });
+
+});
+/*
   
   docker.createContainer({
-    Image: 'alpine/git',
+    Image: 'git:2.17',
     AttachStdin: false,
     AttachStdout: true,
     AttachStderr: true,
     Tty: true,
-    Cmd: [" clone", "--recursive", "https://github.com/fskorzec/shadow-flux.git", "/ci/sflux"],
+    Cmd: ["git","clone", "--recursive", "https://github.com/fskorzec/shadow-flux.git", "/cc/flux"],
     OpenStdin: true,
     StdinOnce: false,
    HostConfig: {
        Mounts: [{
-           Source:"ci",
-           Target:"/ci",
+           Source:"cc",
+           Target:"/cc",
            Type:"volume",
            ReadOnly:false
        }]
    }
   }).then(function(container) {
+    
     return container.start();
   }).then(function(container) {
     return container.resize({
@@ -43,3 +89,6 @@ var docker = new Docker({
     console.log(err);
   });
   
+})
+
+*/
