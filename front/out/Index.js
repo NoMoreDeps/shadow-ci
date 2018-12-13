@@ -10,7 +10,7 @@ var docker = new Docker({
   });
 
   docker.createVolume({"Name": "cc"}).then( _ => {
-  docker.run('git:2.17', ["git","clone", "--recursive", "https://github.com/fskorzec/shadow-flux.git", "/cc/flux"], process.stdout,{
+  docker.run('git:2.17', ["git", "clone", "--recursive", "https://github.com/fskorzec/shadow-flux.git", "/cc/flux"], process.stdout,{
     HostConfig: {
       Mounts: [{
           Source:"cc",

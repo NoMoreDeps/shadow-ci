@@ -7,6 +7,15 @@ class Docker {
     this._dockerode = new Dockerode(options);
   }
 
+  async createVolume() {
+    return await this._dockerode.createVolume({"Name": "cc"});
+  }
+
+  async cleanAll() {
+    await this._dockerode.pruneContainers();
+    await this._dockerode.pruneVolumes();
+  }
+
   async run(options: RunOptions): Promise<any> {
     
     return new Promise<any>( (r,x) => {
@@ -25,6 +34,30 @@ class Docker {
       });
     })
   }
+}
+
+export const docker = new Docker({
+  host: '127.0.0.1',
+  port: process.env.DOCKER_PORT || 2375,
+  version: 'v1.25' 
+})
+
+export const start = async () => {
+  await docker.createVolume();
+}
+
+export const stop = async () => {
+  await docker.cleanAll();
+}
+
+let pwd = "./";
+
+export const getPwd = () => {
+  return pwd;
+}
+
+export const setPwd = (path: string) => {
+  pwd = path;
 }
 
 interface RunOptions {

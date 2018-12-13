@@ -22,7 +22,7 @@ const rest_1 = __importDefault(require("@octokit/rest"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const fs = __importStar(require("fs"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const certPath = "C:\\Users\\franc\\.ssh\\shadow-ci.2018-08-10.private-key.pem";
+const certPath = "perm.txt";
 const appId = "15950";
 const perm = fs.readFileSync(certPath, "utf8");
 function generateJwt() {
