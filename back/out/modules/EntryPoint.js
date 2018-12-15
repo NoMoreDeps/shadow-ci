@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const App_Node_1 = require("shadow-nucleus/out/boot/App.Node");
+const App_Node_1 = require("shadow-nucleus/dist/boot/App.Node");
 (() => __awaiter(this, void 0, void 0, function* () {
     try {
         App_Node_1.start();
